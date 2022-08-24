@@ -1,0 +1,67 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Auth {
+  """JWT access token"""
+  accessToken: JWT!
+
+  """JWT refresh token"""
+  refreshToken: JWT!
+}
+
+input CreatePostInput {
+  content: String!
+  id: String!
+  title: String!
+}
+
+"""
+A field whose value is a JSON Web Token (JWT): https://jwt.io/introduction.
+"""
+scalar JWT
+
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type Mutation {
+  createPost(createPostInput: CreatePostInput!): Post!
+  login(data: LoginInput!): Auth!
+  refreshToken(token: JWT!): Token!
+  removePost(id: Int!): Post!
+  signup(data: SignupInput!): Auth!
+  updatePost(updatePostInput: UpdatePostInput!): Post!
+}
+
+type Post {
+  id: ID!
+  title: String!
+}
+
+type Query {
+  post(id: String!): Post!
+  posts: [Post!]!
+}
+
+input SignupInput {
+  email: String!
+  firstname: String
+  lastname: String
+  password: String!
+}
+
+type Token {
+  """JWT access token"""
+  accessToken: JWT!
+
+  """JWT refresh token"""
+  refreshToken: JWT!
+}
+
+input UpdatePostInput {
+  content: String!
+  id: String!
+  title: String!
+}
